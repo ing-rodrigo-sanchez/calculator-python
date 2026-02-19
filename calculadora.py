@@ -1,115 +1,135 @@
 import math
 
 
-def operaciones():
+def operations():
     while True:
         try:
-            cantidad = int(input("Ingrese el número de operaciones a realizar: "))
+            quantity = int(input("Enter the number of operations to be performed: "))
             break
         except ValueError:
-            print("Ingrese solo números")
+            print("Enter numbers only")
 
-    if opción == 1:
-        contador = 0
-        for _ in range(cantidad):
+    if option == 1:
+        accountant = 0
+
+        for _ in range(quantity):
             while True:
                 try:
-                    valor = float(input("Ingrese el valor númerico: "))
+                    value = float(input("Enter the numerical value: "))
                     break
-                except ValueError:
-                    print("Ingrese solo números")
-            contador += valor
-        print(f"El valor de la suma es de: {contador:.1f}")
 
-    elif opción == 2:
-        contador = 1
-        for _ in range(cantidad):
+                except ValueError:
+                    print("Enter numbers only")
+
+            accountant += value
+        print(f"The value of the sum is: {accountant:.1f}")
+
+    elif option == 2:
+        accountant = 1
+
+        for _ in range(quantity):
             while True:
                 try:
-                    valor = float(input("Ingrese el valor númerico: "))
+                    value = float(input("Enter the numerical value: "))
                     break
-                except ValueError:
-                    print("Ingrese solo números")
-            contador *= valor
-        print(f"El valor de la multiplicación es de: {contador:.1f}")
 
-    elif opción == 3:
-        for _ in range(cantidad):
+                except ValueError:
+                    print("Enter numbers only")
+
+            accountant *= value
+        print(f"The value of the multiplication is: {accountant:.1f}")
+
+    elif option == 3:
+        for _ in range(quantity):
             while True:
                 try:
-                    dividendo = float(input("Ingrese el dividendo: "))
-                    divisor = float(input("Ingrese el divisor: "))
+                    dividend = float(input("Enter the dividend: "))
+                    divider = float(input("Enter the divisor: "))
                     break
+
                 except ValueError:
-                    print("Ingrese solo números")
-            if divisor == 0:
-                print("El divisor no puede ser igual a 0")
+                    print("Enter numbers only")
+
+            if divider == 0:
+                print("The divisor cannot be equal to 0.")
             else:
-                resultado = dividendo / divisor
-                print(f"El valor de la división es de: {resultado:.3f}")
+                resultado = dividend / divider
+                print(f"The value of the division is: {resultado:.3f}")
 
-    elif opción == 4:
-        for _ in range(cantidad):
+    elif option == 4:
+        for _ in range(quantity):
             while True:
                 try:
-                    base = float(input("Ingrese la base: "))
-                    exponente = float(input("Ingrese el exponente: "))
+                    base = float(input("Enter the base: "))
+                    exponent = float(input("Enter the exponent: "))
                     break
-                except ValueError:
-                    print("Ingrese solo números")
-            resultado = base**exponente
-            print(f"El valor de la potencia es de: {resultado:.1f}")
 
-    elif opción == 5:
-        for _ in range(cantidad):
+                except ValueError:
+                    print("Enter numbers only")
+
+            outcome = base**exponent
+            print(f"The power value is: {outcome:.1f}")
+
+    elif option == 5:
+        for _ in range(quantity):
             while True:
                 try:
-                    indice = float(input("Ingrese el índice de la raíz: "))
-                    radicando = float(input("Ingrese el radicando de la raíz: "))
+                    index = float(input("Enter the root index: "))
+                    radicand = float(input("Enter the radicand of the root: "))
                     break
-                except ValueError:
-                    print("Ingrese solo números")
-            resultado = radicando ** (1 / indice)
-            print(f"El valor de la raíz es de: {resultado:.1f}")
 
-    elif opción == 6:
-        for _ in range(cantidad):
+                except ValueError:
+                    print("Enter numbers only")
+
+            if index != 0:
+                outcome = radicand ** (1 / index)
+                print(f"The value of the root is: {outcome:.1f}")
+            else:
+                print("Invalid mathematical operation")
+
+    elif option == 6:
+        for _ in range(quantity):
             while True:
                 try:
-                    argumento = float(input("Ingrese el argumento del logaritmo: "))
-                    base = float(input("Ingrese la base del logaritmo: "))
+                    argument = float(input("Enter the argument of the logarithm: "))
+                    base = float(input("Enter the base of the logarithm: "))
                     break
+
                 except ValueError:
-                    print("Ingrese solo números")
-            resultado = math.log(argumento, base)
-            print(f"El valor del logaritmo es de: {resultado:.1f}")
+                    print("Enter numbers only")
+
+            if argument > 0 and base > 0 and base != 1:
+                outcome = math.log(argument, base)
+                print(f"The value of the logarithm is: {outcome:.1f}")
+            else:
+                print("Invalid mathematical operation")
 
     else:
-        print("Operación no valida")
-        print("Ingrese solo números enteros entre el 1 y el 6")
+        print("Invalid operation")
+        print("Enter only whole numbers between 1 and 6")
         exit()
 
 
-name = input("Ingrese su nombre: ")
-print(f"Bienvenido/a {name} a tu calculadora")
+name = input("Enter your name: ")
+print(f"Welcome {name} to your calculator")
 
-menu_operaciones = [
-    "1. Suma y/o Resta",
-    "2. Multiplicación",
-    "3. División",
-    "4. Potenciación",
-    "5. Raíz",
-    "6. Logaritmo",
-]
-print("Las operaciones disponibles son:")
-for lista in menu_operaciones:
-    print(lista)
+print(
+    "1. Addition and/or Subtraction \n",
+    "2. Multiplication \n",
+    "3. Division \n",
+    "4. Exponentiation \n",
+    "5. Root \n",
+    "6. Logarithm \n",
+)
 
 while True:
     try:
-        opción = int(input("Escoja el número de la operación deseada: "))
+        option = int(input("Select the number of the desired operation: "))
         break
-    except ValueError:
-        print("Ingrese solo números")
 
-operaciones()
+    except ValueError:
+        print("Enter only numbers")
+
+operations()
+
+print(f"Thank you very much {name}, for using the app ;)")
