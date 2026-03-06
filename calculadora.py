@@ -68,7 +68,7 @@ while True:
     while True:
         try:
             if option == 6:
-                number_1 = float(input("Enter the base: "))
+                number_1 = float(input("Enter the number: "))
                 break
 
             number_1 = float(input("Enter first number: "))
