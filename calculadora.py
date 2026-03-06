@@ -1,135 +1,90 @@
 import math
 
 
-def operations():
-    while True:
-        try:
-            quantity = int(input("Enter the number of operations to be performed: "))
-            break
-        except ValueError:
-            print("Enter numbers only")
+def add(a, b):
+    print(f"Result: {a + b}")
 
-    if option == 1:
-        accountant = 0
 
-        for _ in range(quantity):
-            while True:
-                try:
-                    value = float(input("Enter the numerical value: "))
-                    break
+def subtract(a, b):
+    print(f"Result: {a - b}")
 
-                except ValueError:
-                    print("Enter numbers only")
 
-            accountant += value
-        print(f"The value of the sum is: {accountant:.1f}")
+def multiplication(a, b):
+    print(f"Result: {a * b}")
 
-    elif option == 2:
-        accountant = 1
 
-        for _ in range(quantity):
-            while True:
-                try:
-                    value = float(input("Enter the numerical value: "))
-                    break
-
-                except ValueError:
-                    print("Enter numbers only")
-
-            accountant *= value
-        print(f"The value of the multiplication is: {accountant:.1f}")
-
-    elif option == 3:
-        for _ in range(quantity):
-            while True:
-                try:
-                    dividend = float(input("Enter the dividend: "))
-                    divider = float(input("Enter the divisor: "))
-                    break
-
-                except ValueError:
-                    print("Enter numbers only")
-
-            if divider == 0:
-                print("The divisor cannot be equal to 0.")
-            else:
-                resultado = dividend / divider
-                print(f"The value of the division is: {resultado:.3f}")
-
-    elif option == 4:
-        for _ in range(quantity):
-            while True:
-                try:
-                    base = float(input("Enter the base: "))
-                    exponent = float(input("Enter the exponent: "))
-                    break
-
-                except ValueError:
-                    print("Enter numbers only")
-
-            outcome = base**exponent
-            print(f"The power value is: {outcome:.1f}")
-
-    elif option == 5:
-        for _ in range(quantity):
-            while True:
-                try:
-                    index = float(input("Enter the root index: "))
-                    radicand = float(input("Enter the radicand of the root: "))
-                    break
-
-                except ValueError:
-                    print("Enter numbers only")
-
-            if index != 0:
-                outcome = radicand ** (1 / index)
-                print(f"The value of the root is: {outcome:.1f}")
-            else:
-                print("Invalid mathematical operation")
-
-    elif option == 6:
-        for _ in range(quantity):
-            while True:
-                try:
-                    argument = float(input("Enter the argument of the logarithm: "))
-                    base = float(input("Enter the base of the logarithm: "))
-                    break
-
-                except ValueError:
-                    print("Enter numbers only")
-
-            if argument > 0 and base > 0 and base != 1:
-                outcome = math.log(argument, base)
-                print(f"The value of the logarithm is: {outcome:.1f}")
-            else:
-                print("Invalid mathematical operation")
-
+def division(a, b):
+    if b != 0:
+        print(f"Result: {a / b}")
     else:
-        print("Invalid operation")
-        print("Enter only whole numbers between 1 and 6")
-        exit()
+        print("You cannot divide by zero.")
 
 
-name = input("Enter your name: ")
-print(f"Welcome {name} to your calculator")
+def empowerment(a, b):
+    print(f"Result: {a ** b}")
 
-print(
-    "1. Addition and/or Subtraction \n",
-    "2. Multiplication \n",
-    "3. Division \n",
-    "4. Exponentiation \n",
-    "5. Root \n",
-    "6. Logarithm \n",
-)
+
+def squared_root(a):
+    if a >= 0:
+        print(f"Result: {math.sqrt(a)}")
+    else:
+        print("The base cannot be negative.")
+
+
+def logarithm(a, b):
+    if a > 0 and b > 0 and b != 1:
+        print(f"Result: {math.log(a, b)}")
+    else:
+        print("Invalid values for logarithm.")
+
+
+operations = {
+    1: add,
+    2: subtract,
+    3: multiplication,
+    4: division,
+    5: empowerment,
+    6: squared_root,
+    7: logarithm,
+}
 
 while True:
-    try:
-        option = int(input("Select the number of the desired operation: "))
+
+    for number, operation in operations.items():
+        print(f"{number}. {operation.__name__}")
+
+    while True:
+        try:
+            option = int(input("Number option: "))
+            if option in operations:
+                break
+
+            else:
+                print("Enter a number from the list")
+
+        except ValueError:
+            print("Enter only numbers")
+
+    while True:
+        try:
+            if option == 6:
+                number_1 = float(input("Enter the base: "))
+                break
+
+            number_1 = float(input("Enter first number: "))
+            number_2 = float(input("Enter second number: "))
+            break
+
+        except ValueError:
+            print("Enter only numbers")
+
+    if option == 6:
+        operations[option](number_1)
+
+    else:
+        operations[option](number_1, number_2)
+
+    repeat = input("Would you like to use the calculator again? (yes/no): ")
+
+    if repeat.lower() == "no":
         break
-
-    except ValueError:
-        print("Enter only numbers")
-
-operations()
-
-print(f"Thank you very much {name}, for using the app ;)")
